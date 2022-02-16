@@ -107,14 +107,55 @@
         android:layout_height="wrap_content"
         android:background="@drawable/pressed_colorchange"
         android:fontFamily="sans-serif-light"
+        android:onClick="getResult"
         android:text="Give me love!"
-        android:textColor="@drawable/pressed_textcolorchange"
         android:textAllCaps="false"
+        android:textColor="@drawable/pressed_textcolorchange"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.05"
+        app:layout_constraintHorizontal_bias="0.051"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.546" />
+        app:layout_constraintVertical_bias="0.525" />
+
+    <TextView
+        android:id="@+id/text_score"
+        android:layout_width="125dp"
+        android:layout_height="41dp"
+        android:fontFamily="casual"
+        android:text="Compatibility:"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.54" />
+
+    <TextView
+        android:id="@+id/text_number"
+        android:layout_width="120dp"
+        android:layout_height="62dp"
+        android:fontFamily="casual"
+        android:textColor="#FF0000"
+        android:textSize="34sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.536" />
+
+    <ImageView
+        android:id="@+id/img_icon"
+        android:layout_width="49dp"
+        android:layout_height="53dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.632"
+        app:srcCompat='@drawable/empty'
+        tools:srcCompat="@drawable/empty" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
