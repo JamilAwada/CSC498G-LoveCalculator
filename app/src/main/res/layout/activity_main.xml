@@ -8,6 +8,19 @@
     tools:context=".MainActivity">
 
     <TextView
+        android:id="@+id/text_language"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Select a language:"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.061"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.41" />
+
+    <TextView
         android:id="@+id/logo_text2"
         android:layout_width="135dp"
         android:layout_height="86dp"
@@ -45,7 +58,7 @@
 
     <EditText
         android:id="@+id/input_fullname"
-        android:layout_width="186dp"
+        android:layout_width="188dp"
         android:layout_height="38dp"
         android:background="@drawable/input_border"
         android:ems="10"
@@ -54,7 +67,7 @@
         android:inputType="textPersonName"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.92"
+        app:layout_constraintHorizontal_bias="0.915"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.279" />
@@ -71,5 +84,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.275" />
+
+    <Spinner
+        android:id="@+id/spinner_language"
+        android:layout_width="188dp"
+        android:layout_height="38dp"
+        android:background="@drawable/input_border"
+        android:entries="@array/languages_array"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.923"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.414" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
