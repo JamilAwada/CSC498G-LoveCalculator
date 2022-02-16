@@ -81,9 +81,18 @@ public class MainActivity extends AppCompatActivity {
                 icon.setImageResource(R.drawable.c_);
                 YoYo.with(Techniques.SlideInRight).duration(700).repeat(0).playOn(icon);
             }
-            else if (selectedLanguage.equals("JavaScript")){
+            else if (selectedLanguage.equals("JavaScript")) {
                 icon.setImageResource(R.drawable.javascript);
                 YoYo.with(Techniques.SlideInRight).duration(700).repeat(0).playOn(icon);
+            }
+            if (randomInt <= 33){
+                YoYo.with(Techniques.Wobble).duration(700).repeat(5).playOn(icon);
+            }
+            else if (randomInt > 33 && randomInt <= 66){
+                YoYo.with(Techniques.Bounce).duration(700).repeat(5).playOn(icon);
+            }
+            else {
+                YoYo.with(Techniques.Pulse).duration(700).repeat(5).playOn(icon);
             }
         }
     }
