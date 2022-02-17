@@ -50,8 +50,10 @@ public class MainActivity extends AppCompatActivity {
 
     public void getResult(View view){
         String fullName = name.getText().toString();
+        // Check if user input a name
         if (fullName.isEmpty()){
             Toast.makeText(getApplicationContext(), "Empty field, please enter your name!", Toast.LENGTH_LONG).show();
+            YoYo.with(Techniques.Wobble).duration(700).repeat(0).playOn(name);
         }
         else {
             String selectedLanguage = sp.getSelectedItem().toString();
