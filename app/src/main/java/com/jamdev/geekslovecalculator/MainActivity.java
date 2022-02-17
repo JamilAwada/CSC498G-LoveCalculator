@@ -20,9 +20,6 @@ import android.widget.Toast;
 import com.daimajia.androidanimations.library.Techniques;
 import com.daimajia.androidanimations.library.YoYo;
 
-import org.w3c.dom.Text;
-
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
@@ -33,29 +30,35 @@ public class MainActivity extends AppCompatActivity {
     ImageView icon;
     Button btn;
     TableLayout tbl;
+
+    // These lists will be used to keep track of rounds played and corresponding scores
     ArrayList<String> languages = new ArrayList<String>();
     ArrayList<String> scores = new ArrayList<String>();
+
     int roundsPlayed = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         // These 3 lines hide the title and action bar
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         getSupportActionBar().hide();
+
         setContentView(R.layout.activity_main);
 
         // Initializing the variables
         sp = findViewById(R.id.spinner_language);
         result = findViewById(R.id.text_number);
         name = findViewById(R.id.input_fullname);
-        btn = findViewById(R.id.button);
+        btn = findViewById(R.id.button_roll);
         icon = findViewById(R.id.img_icon);
         tbl = findViewById(R.id.table_main);
 
     }
 
+    // Helper function to generate a random integer
     public int getRandomInt(){
         int min = 0;
         int max = 100;
@@ -63,10 +66,13 @@ public class MainActivity extends AppCompatActivity {
         return randomInt;
     }
 
+    // Function to add a row into the table
     public void insertRow(){
+        // Custom typeface for row elements
         Typeface face = Typeface.create("casual", Typeface.NORMAL);
         TableRow tempRow = new TableRow(this);
 
+        // Populate language column
         TextView languageCol = new TextView(this);
         languageCol.setText(languages.get(roundsPlayed).toString());
         languageCol.setTextSize(16);
@@ -74,6 +80,7 @@ public class MainActivity extends AppCompatActivity {
         languageCol.setTypeface(face);
         tempRow.addView(languageCol);
 
+        // Populate score column
         TextView scoreCol = new TextView(this);
         scoreCol.setText((scores.get(roundsPlayed).toString()));
         scoreCol.setTextSize(16);
@@ -82,16 +89,21 @@ public class MainActivity extends AppCompatActivity {
         scoreCol.setTextColor(Color.RED);
         tempRow.addView(scoreCol);
 
+        // Add entries to table
         tbl.addView(tempRow);
 
+        // Increment the number of rounds played for UI and data-retrieval purposes
         roundsPlayed++;
     }
 
+    // Function to clear the entire table and reset the lists
     public void clear(View view){
         roundsPlayed = 0;
         languages.clear();
         scores.clear();
         result.setText("");
+
+        // Remove all elements from table except for headers
         if (tbl.getRootView() != null) {
             int i = 1;
             while (tbl.getChildCount() != 1) {
@@ -100,20 +112,25 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    // Main function
     public void getResult(View view){
         String fullName = name.getText().toString();
+
         // Check if user input a name
         if (fullName.isEmpty()){
             Toast.makeText(getApplicationContext(), "Empty field, please enter your name!", Toast.LENGTH_LONG).show();
             YoYo.with(Techniques.Wobble).duration(700).repeat(0).playOn(name);
         }
         else {
+            // Check if table is full
             if (roundsPlayed < 8){
                 String selectedLanguage = sp.getSelectedItem().toString();
                 languages.add(selectedLanguage);
                 int randomInt = getRandomInt();
                 scores.add(Integer.toString(randomInt) + "%");
                 result.setText(randomInt + "%");
+
+                // Check for selected language
                 if (selectedLanguage.equals("Java")){
                     icon.setImageResource(R.drawable.java);
                     YoYo.with(Techniques.SlideInRight).duration(700).repeat(0).playOn(icon);
