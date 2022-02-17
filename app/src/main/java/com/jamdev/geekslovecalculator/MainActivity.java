@@ -92,8 +92,11 @@ public class MainActivity extends AppCompatActivity {
         languages.clear();
         scores.clear();
         result.setText("");
-        for (int i = 1; i < 10; i++){
-            tbl.removeView(tbl.getChildAt(i));
+        if (tbl.getRootView() != null) {
+            int i = 1;
+            while (tbl.getChildCount() != 1) {
+                tbl.removeViewAt(i);
+            }
         }
     }
 
@@ -105,7 +108,7 @@ public class MainActivity extends AppCompatActivity {
             YoYo.with(Techniques.Wobble).duration(700).repeat(0).playOn(name);
         }
         else {
-            if (roundsPlayed < 9){
+            if (roundsPlayed < 8){
                 String selectedLanguage = sp.getSelectedItem().toString();
                 languages.add(selectedLanguage);
                 int randomInt = getRandomInt();
